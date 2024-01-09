@@ -17,7 +17,7 @@ Want us to add your verification process inside of our human registry? \
 
 ### Requirements
 
-* Create a contract
+* Create a contract We prefer you deploy your contract under a named account, preferably as a subaccount like twitter.womrhol3.near so users can trust your entity for maintaining this contract. For example; say you create a contract that binds as twitter account to, you will create a helper function that can be called to view whether an account has successfully binded on both ends. You do not have to create a mapping contract method. For example we are not asking you return the twitter account ID, rather we just are trusting that you just verify if an account has compelted a certain check. For example on twitter.wormhol3.near you would have a method isTwitterVerified(accountId): bool. Currently it is up to the PotLock Sybil team to determine weights based on impact of check and trustworthiness of entity.
 * Need a clear external link
 * Make sure you are compatible with all wallets on NEAR Wallet selector&#x20;
 * Create a helper view method on a contract that takes in a accountid and returns a boolean
@@ -56,4 +56,7 @@ Check out our registry contract to understand how to make your check compatible
 
 * **Wormhol3 Twitter x NEAR Social Cross posting** [https://github.com/wormhole3/wormhole3-account-binding](https://github.com/wormhole3/wormhole3-account-binding) (for connecting account with twitter and delegating access to contract to post on NEAR.social)
 * **NDC I Am Human** [https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker](https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker) (uses fractal face scan for detecting)  [https://nearblocks.io/address/registry.i-am-human.near](https://nearblocks.io/address/registry.i-am-human.near)
+  *   I-Am-Human registry
+
+      I am human is a registry contract that issues SBT based on Fractal's face verification to issue a SBT according to NEP 393. This was using in the first NDC election to verify humans for a vote. We leverage the registry is\_human method to check if someone has a face scan without the need for PotLock's contributor to keep track or having a Fractal api. &#x20;
 * **Dapplets using connected Accounts** [https://github.com/dapplets/connected-accounts-assembly](https://github.com/dapplets/connected-accounts-assembly)
