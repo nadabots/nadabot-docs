@@ -22,6 +22,8 @@ Staging [v1.staging.nadabot.near](https://nearblocks.io/address/v1.staging.nadab
 
 Testnet [v1.nadabot.testnet](https://testnet.nearblocks.io/address/v1.nadabot.testnet)
 
+As new versions come out check out the [nada.bot/changelog](https://nada.bot/changelog) to see new contracts depeloyed under this naming convention, ex _**v2.nadabot.near, v2.staging.nadabot.near, v2.nadabot.testnet**_ and so forth.
+
 
 
 ## Repo
