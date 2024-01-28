@@ -1,6 +1,6 @@
 ---
 description: >-
-  For developer looking to work in our testnet, staging, and production
+  For developers looking to work in our testnet, staging, and production
   environments.
 ---
 
@@ -21,3 +21,13 @@ Mainnet [v1.nadabot.near](https://nearblocks.io/address/v1.nadabot.near)
 Staging [v1.staging.nadabot.near](https://nearblocks.io/address/v1.staging.nadabot.near)
 
 Testnet [v1.nadabot.testnet](https://testnet.nearblocks.io/address/v1.nadabot.testnet)
+
+
+
+## Repo
+
+{% embed url="https://github.com/PotLock/nadabot-app/" %}
+
+## Looking to Contribute
+
+Check out at public backlog at [https://nada.bot/backlog ](https://nada.bot/backlog)

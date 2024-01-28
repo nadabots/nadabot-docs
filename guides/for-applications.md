@@ -32,7 +32,7 @@ async function initNear() {
         networkId: "mainnet", // or "testnet"
         keyStore: new keyStores.BrowserLocalStorageKeyStore(),
         nodeUrl: "https://rpc.mainnet.near.org", // or "https://rpc.testnet.near.org" for testnet
-        walletUrl: "https://wallet.near.org", // or "https://wallet.testnet.near.org" for testnet
+        walletUrl: "https://app.mynearwallet.com", // or "https://wallet.testnet.near.org" for testnet
     };
 
     // Initialize connection to the NEAR protocol
@@ -136,7 +136,7 @@ pub struct MyContract {
 #[near_bindgen]
 impl MyContract {
     pub fn call_is_human(&self, account_id: AccountId) {
-        let sybil_contract: AccountId = "sybil.potlock.near".parse().unwrap();
+        let sybil_contract: AccountId = "v1.nadabot.near".parse().unwrap();
 
         // Call `isHuman` method on the sybil_contract
         Promise::new(sybil_contract)

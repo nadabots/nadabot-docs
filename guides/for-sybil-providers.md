@@ -12,9 +12,6 @@ Want us to add your verification process inside of our human registry? \
 * Get people sent to you through our aggregator
 * Have all the applications that emit our contracts automatically integrate yourselve
 
-\
-
-
 ### Requirements
 
 * Create a contract We prefer you deploy your contract under a named account, preferably as a subaccount like twitter.womrhol3.near so users can trust your entity for maintaining this contract. For example; say you create a contract that binds as twitter account to, you will create a helper function that can be called to view whether an account has successfully binded on both ends. You do not have to create a mapping contract method. For example we are not asking you return the twitter account ID, rather we just are trusting that you just verify if an account has compelted a certain check. For example on twitter.wormhol3.near you would have a method isTwitterVerified(accountId): bool. Currently it is up to the PotLock Sybil team to determine weights based on impact of check and trustworthiness of entity.
