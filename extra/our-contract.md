@@ -4,7 +4,9 @@ description: Our sybil contract
 
 # 📃 Our Contract
 
-Deployed contract can be found at [https://nearblocks.io/address/sybil.potlock.near](https://nearblocks.io/address/sybil.potlock.near)&#x20;
+Deployed contract can be found at&#x20;
+
+
 
 Our contract are at [https://github.com/PotLock/core/tree/main/contracts/sybil](https://github.com/PotLock/core/tree/main/contracts/sybil)&#x20;
 

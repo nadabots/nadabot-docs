@@ -54,9 +54,14 @@ Check out our registry contract to understand how to make your check compatible
 
 ### Examples of Contracts Related to Sybil Providers
 
-* **Wormhol3 Twitter x NEAR Social Cross posting** [https://github.com/wormhole3/wormhole3-account-binding](https://github.com/wormhole3/wormhole3-account-binding) (for connecting account with twitter and delegating access to contract to post on NEAR.social)
-* **NDC I Am Human** [https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker](https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker) (uses fractal face scan for detecting)  [https://nearblocks.io/address/registry.i-am-human.near](https://nearblocks.io/address/registry.i-am-human.near)
+* **Our Sybil Simulator Contract** [**https://github.com/PotLock/core/tree/main/contracts/sybil\_provider\_simulator**](https://github.com/PotLock/core/tree/main/contracts/sybil\_provider\_simulator)
+
+**Other Examples**
+
+* **Wormhol3 Twitter x NEAR Social Cross posting (WIP)** [https://github.com/wormhole3/wormhole3-account-binding](https://github.com/wormhole3/wormhole3-account-binding) (for connecting account with twitter and delegating access to contract to post on NEAR.social)
+* **NDC I Am Human** [https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker](https://github.com/near-ndc/i-am-human/tree/master/contracts/human\_checker) (uses fractal face scan for detecting)  [https://nearblocks.io/address/registry.i-am-human.near](https://nearblocks.io/address/registry.i-am-human.near) (WIP)
   *   I-Am-Human registry
 
       I am human is a registry contract that issues SBT based on Fractal's face verification to issue a SBT according to NEP 393. This was using in the first NDC election to verify humans for a vote. We leverage the registry is\_human method to check if someone has a face scan without the need for PotLock's contributor to keep track or having a Fractal api. &#x20;
-* **Dapplets using connected Accounts** [https://github.com/dapplets/connected-accounts-assembly](https://github.com/dapplets/connected-accounts-assembly)
+* Holoynm (WIP) [https://github.com/holonym-foundation/v3-near-contract](https://github.com/holonym-foundation/v3-near-contract)
+* **Dapplets using connected Accounts (WIP)** [https://github.com/dapplets/connected-accounts-assembly](https://github.com/dapplets/connected-accounts-assembly)
