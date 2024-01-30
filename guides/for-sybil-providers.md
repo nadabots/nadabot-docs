@@ -19,13 +19,17 @@ Have a stamp idea and want the ecosystem to build it, post on github at [https:/
 ### Requirements
 
 * Create a contract We prefer you deploy your contract under a named account, preferably as a subaccount like twitter.womrhol3.near so users can trust your entity for maintaining this contract. For example; say you create a contract that binds as twitter account to, you will create a helper function that can be called to view whether an account has successfully binded on both ends. You do not have to create a mapping contract method. For example we are not asking you return the twitter account ID, rather we just are trusting that you just verify if an account has compelted a certain check. For example on twitter.wormhol3.near you would have a method isTwitterVerified(accountId): bool. Currently it is up to the PotLock Sybil team to determine weights based on impact of check and trustworthiness of entity.
-* Need a clear external link
-* Make sure you are compatible with all wallets on NEAR Wallet selector&#x20;
+* Need a clear external link for users to do the "action" to update their account to the appropriate state to show up as "true" on your check. An example of this [https://test.near.org/wendersonpires.testnet/widget/SybilProviderSimulator-Interface?contractId=sybilprovidersimulator-3.nadabot.testnet](https://test.near.org/wendersonpires.testnet/widget/SybilProviderSimulator-Interface?contractId=sybilprovidersimulator-3.nadabot.testnet)&#x20;
+
+{% hint style="info" %}
+This maybe a specific route of an existing application where you use a third party API that interacts with your contract. Make sure you application is integrated with NEAR Wallet Selector.&#x20;
+{% endhint %}
+
 * Create a helper view method on a contract that takes in a accountid and returns a boolean
 * Add the contract name and method&#x20;
-* Create a picture
+* Create a picture (uploads it to ipfs)
 * A clear description of your verification process and what you are verifying
-* Add an icon for your image
+* Estimate gas user needs to verify stamp on your contract (not including what user needs to pay to add stamp to our contract \~0.01N)
 
 First login,  click “Submit Check”, then a form will pull up. Submitting of the form requires a transaction
 
@@ -56,6 +60,7 @@ Check out our registry contract to understand how to make your check compatible
 ### Examples of Contracts Related to Sybil Providers
 
 * **Our Sybil Simulator Contract** [**https://github.com/PotLock/core/tree/main/contracts/sybil\_provider\_simulator**](https://github.com/PotLock/core/tree/main/contracts/sybil\_provider\_simulator)
+* NEAR Social Profile Provider - check if someone has a relatively complete NEAR Social Profile [https://github.com/PotLock/near-social-sybil-provider](https://github.com/PotLock/near-social-sybil-provider)
 
 **Other Examples**
 
