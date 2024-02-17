@@ -68,71 +68,90 @@ npm install near-api-js near-wallet-selector
 
 In your javascript app
 
+#### Check Human and Human Score
+
+{% embed url="https://github.com/PotLock/helpful-js/blob/main/isHuman.js" %}
+
 ```javascript
-import { connect, keyStores, WalletConnection } from 'near-api-js';
-import { setupWalletSelector } from 'near-wallet-selector';
+const { connect, keyStores, utils } = require('near-api-js');
 
-async function initNear() {
-    const nearConfig = {
-        networkId: "mainnet", // or "testnet"
-        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-        nodeUrl: "https://rpc.mainnet.near.org", // or "https://rpc.testnet.near.org" for testnet
-        walletUrl: "https://app.mynearwallet.com", // or "https://wallet.testnet.near.org" for testnet
-    };
-
-    // Initialize connection to the NEAR protocol
-    const near = await connect(nearConfig);
-
-    // Initialize Wallet Selector
-    const walletSelector = await setupWalletSelector({ 
-        network: nearConfig.networkId,
-        modules: [/* ... */],
+async function checkHuman(accountId) {
+    // Configure the connection to the NEAR blockchain
+    const near = await connect({
+        networkId: "mainnet",
+        keyStore: new keyStores.InMemoryKeyStore(),
+        nodeUrl: "https://rpc.mainnet.near.org",
+        walletUrl: "https://app.mynearwallet.com/"
     });
 
-    // Initialize Wallet Connection
-    const wallet = new WalletConnection(near, null);
+    // Use a generic account for contract calls
+    const staging =  false;
+    const contract = staging ? "v1.staging.nada.bot" : "v1.nadabot.near";
+    const account = await near.account(accountId);
 
-    return { wallet, walletSelector, near };
-}
-
-async function checkIsHuman(accountId) {
-    const { wallet } = await initNear();
-
-    if (!wallet.isSignedIn()) {
-        // Show login popup modal here
-        // Example: showModal("Please sign in to continue");
-        return;
-    }
-
-    const contract = new wallet.account().contract({
-        viewMethods: ['is_human'],
-        changeMethods: [],
+    // Fetch all donations
+    const isHuman = await account.viewFunction({
+        contractId: contract,
+        methodName: "is_human",
+        args: {account_id: accountId}
     });
 
-    try {
-        const isHuman = await contract.is_human({ account_id: accountId });
-        let grantAccess = is_human;
-        console.log("Grant Access: ", grantAccess);
+    console.log(isHuman);
 
-        // Additional logic based on grantAccess
-    } catch (error) {
-        console.error("Error checking if human: ", error);
-    }
+    // Return the top donors and their streaks
+    return isHuman;
 }
 
-// Replace with the actual account ID to check
-const accountIdToCheck = "example-account.near";
-checkIsHuman(accountIdToCheck);
+async function humanScore(accountId) {
+    // Configure the connection to the NEAR blockchain
+    const near = await connect({
+        networkId: "mainnet",
+        keyStore: new keyStores.InMemoryKeyStore(),
+        nodeUrl: "https://rpc.mainnet.near.org",
+        walletUrl: "https://app.mynearwallet.com/"
+    });
+
+    // Use a generic account for contract calls
+    const staging =  false;
+    const contract = staging ? "v1.staging.nada.bot" : "v1.nadabot.near";
+    const account = await near.account(accountId);
+
+    // Fetch all donations
+    const score = await account.viewFunction({
+        contractId: contract,
+        methodName: "get_human_score",
+        args: {account_id: accountId}
+    });
+
+    // returns score
+    return score.score;
+}
+
+// change with the account you wan to check
+const testAccount = "odins_eyehole.near"; 
+// call just human
+checkHuman(testAccount).then(isHuman => {
+    // Additional handling if needed
+}).catch(error => {
+    console.error("Error checking for human:", error);
+});
+// to get score, also returns is human but just pull score
+humanScore(testAccount).then(score => {
+    // Additional handling if needed
+}).catch(error => {
+    console.error("Error checking for human score:", error);
+});
+
 
 ```
 
-This code does the following:
+Some notes about the code snippet
 
-1. Initializes a connection to the NEAR blockchain using the `near-api-js` library.
-2. Sets up the NEAR Wallet Selector, which allows users to log in using various NEAR wallets.
-3. Checks if the user is logged in; if not, shows a popup modal prompting them to sign in.
-4. Once logged in, it calls the `is_human` view method on the `v1.nadabot.near` contract, passing the specified `accountId`.
-5. The result (true/false) is saved in the `grantAccess` variable and can be used for further logic.
+* **Interact with NEAR Blockchain**: Utilizes `near-api-js` to connect to the NEAR mainnet and interact with a specified smart contract, handling blockchain operations like querying account details and executing contract methods.
+* **Verify Human Status**: The `checkHuman` function checks if a given NEAR account is recognized as human by calling the `is_human` method on the smart contract, useful for differentiating between automated bots and human users.
+* **Retrieve Human Score**: The `humanScore` function queries the smart contract for a "human score" associated with the account, providing a quantitative measure of the account's human-like behavior or verification status via the `get_human_score` method.
+* **Configurable for Environments**: Supports switching between staging and production environments by altering the contract address, allowing for flexible testing and deployment scenarios.
+* **Asynchronous and Error Handling**: Implements asynchronous JavaScript patterns for non-blocking calls to the NEAR blockchain and includes error handling for robust operation and debugging.
 
 Make sure to handle the UI elements (like the popup modal) according to your application's frontend framework or library. The above code assumes a basic JavaScript setup and will need to be adapted to fit your specific implementation details.
 
@@ -227,9 +246,9 @@ impl MyContract {
 
 ```
 
-###
-
 ## Ideas to Integrate
 
 * Airdropping and amplified rewards for loyalty programs
 * 1 person 1 vote for governance on governance contract
+* Quadratic funding
+* Human based fees
