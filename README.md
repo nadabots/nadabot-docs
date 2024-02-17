@@ -23,8 +23,8 @@ We are looking to create a trusted and inclusive web3 environment by eliminating
 * **✅ Sybil providers:** add additional checks to get users to verify with you service
 * **📲 Applications / Protocols:** integrate our contract via cross contract call to enforce bot protection
 
-{% content-ref url="guides/for-users.md" %}
-[for-users.md](guides/for-users.md)
+{% content-ref url="guides/for-users/" %}
+[for-users](guides/for-users/)
 {% endcontent-ref %}
 
 {% content-ref url="guides/for-sybil-providers.md" %}

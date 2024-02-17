@@ -4,7 +4,8 @@
 
 ## 📖 Guides
 
-* [👨💼 For Users](guides/for-users.md)
+* [👨💼 For Users](guides/for-users/README.md)
+  * [🔍 Find Other Users](guides/for-users/find-other-users.md)
 * [✅ For Sybil Providers](guides/for-sybil-providers.md)
 * [📱 For Applications](guides/for-applications.md)
 * [🤖 For Bots](guides/for-bots.md)

@@ -11,6 +11,35 @@ If you want to integrate us this usually means you are building an application o
 
 ## Front End Gating
 
+### BOS/NEARJS
+
+[NEARJS](https://docs.near.org/bos)/BOS is a framework for front end development that stores front end JSX code on chain that can be accessed across different gateways / web apps that support the BOS VM. NEAR API JS is built in. Here is an easy way to detect human checks
+
+#### Check Contract for Human
+
+{% hint style="info" %}
+Humans are calculated by adding assigned weights of stamps a user has, against a set of rules of how stamps interacts, against a human threshold. If the account that is being checked passes the human threshold score after being called than an account is considered a human
+{% endhint %}
+
+[https://near.social/plugrel.near/widget/nadabot\_human](https://near.social/plugrel.near/widget/nadabot\_human) (Example of BOS helper component)
+
+```jsx
+// check is_human method that enables
+const accountId = props.accountId ?? "odins_eyehole.near";
+
+Near.asyncView("v1.nadabot.near", "is_human", { account_id: accountId }).then(
+  (result) => {
+    State.update({ human: result });
+  }
+);
+
+return <>{state.human && <span>✅</span>}</>;
+```
+
+##
+
+## VanillaJS
+
 Check out the NEAR Docs to get a better sense of how to integrate in the front end. If you are using a javascript front end library you will most likely be integrating with our contract via NEAR API JS
 
 
@@ -60,13 +89,13 @@ async function checkIsHuman(accountId) {
     }
 
     const contract = new wallet.account().contract({
-        viewMethods: ['isHuman'],
+        viewMethods: ['is_human'],
         changeMethods: [],
     });
 
     try {
-        const isHuman = await contract.isHuman({ account_id: accountId });
-        let grantAccess = isHuman;
+        const isHuman = await contract.is_human({ account_id: accountId });
+        let grantAccess = is_human;
         console.log("Grant Access: ", grantAccess);
 
         // Additional logic based on grantAccess
@@ -86,7 +115,7 @@ This code does the following:
 1. Initializes a connection to the NEAR blockchain using the `near-api-js` library.
 2. Sets up the NEAR Wallet Selector, which allows users to log in using various NEAR wallets.
 3. Checks if the user is logged in; if not, shows a popup modal prompting them to sign in.
-4. Once logged in, it calls the `isHuman` view method on the `sybil.potlock.near` contract, passing the specified `accountId`.
+4. Once logged in, it calls the `is_human` view method on the `v1.nadabot.near` contract, passing the specified `accountId`.
 5. The result (true/false) is saved in the `grantAccess` variable and can be used for further logic.
 
 Make sure to handle the UI elements (like the popup modal) according to your application's frontend framework or library. The above code assumes a basic JavaScript setup and will need to be adapted to fit your specific implementation details.
